@@ -7,7 +7,9 @@
   </head>
   <body ng-app="forOM" ng-controller="BlinkCtrl">
     <div>
-      {{test}}
+      <div ng-repeat="post in posts | orderBy: '-upvotes'">
+        {{post.title}} - upvotes: {{post.upvotes}}
+      </div>
     </div>
   </body>
 </html>
