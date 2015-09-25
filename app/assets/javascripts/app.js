@@ -7,12 +7,12 @@ function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('winks', {
       url: '/home',
-      templateUrl: '/home/_home.html',
+      templateUrl: 'winks/_winks.html',
       controller: 'WinksCtrl'
     })
     .state('blinks', {
       url: '/posts/{id}',
-      templateUrl: '/posts/_blinks.html',
+      templateUrl: 'blinks/_blinks.html',
       controller: 'BlinksCtrl'
     });
 
