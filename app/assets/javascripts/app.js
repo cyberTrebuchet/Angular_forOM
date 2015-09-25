@@ -1,19 +1,19 @@
-angular.module('forOM', ['ui.router'])
+angular.module('forOM', ['ui.router', 'templates'])
 .config([
 '$stateProvider',
 '$urlRouterProvider',
 function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
-    .state('blinks', {
-      url: '/home',
-      templateUrl: '/blinks.html',
-      controller: 'BlinksCtrl'
-    })
     .state('winks', {
-      url: '/posts/{id}',
-      templateUrl: '/winks.html',
+      url: '/home',
+      templateUrl: '/home/_home.html',
       controller: 'WinksCtrl'
+    })
+    .state('blinks', {
+      url: '/posts/{id}',
+      templateUrl: '/posts/_blinks.html',
+      controller: 'BlinksCtrl'
     });
 
   $urlRouterProvider.otherwise('home');
@@ -22,16 +22,16 @@ function($stateProvider, $urlRouterProvider) {
 function(){
 var o = {
   posts: [
-    {title: 'post 1', upvotes: 5},
-    {title: 'post 2', upvotes: 2},
-    {title: 'post 3', upvotes: 15},
-    {title: 'post 4', upvotes: 9},
-    {title: 'post 5', upvotes: 4}
+    {id: 1, title: 'post 1', upvotes: 5},
+    {id: 2, title: 'post 2', upvotes: 2},
+    {id: 3, title: 'post 3', upvotes: 15},
+    {id: 4, title: 'post 4', upvotes: 9},
+    {id: 5, title: 'post 5', upvotes: 4}
   ]
 };
 return o;
 }])
-.controller('BlinksCtrl', [
+.controller('WinksCtrl', [
 '$scope',
 'posts',
 function($scope, posts){
@@ -43,7 +43,7 @@ function($scope, posts){
     post.upvotes += 1;
   };
 
-  $scope.addPost = function(){
+  $scope.wink = function(){
     if(!$scope.title || $scope.title === '') { return; }
     $scope.posts.push({
       title: $scope.title,
@@ -58,7 +58,7 @@ function($scope, posts){
     $scope.link = '';
   };
 }])
-.controller('WinksCtrl', [
+.controller('BlinksCtrl', [
 '$scope',
 '$stateParams',
 'posts',
