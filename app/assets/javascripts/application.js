@@ -11,5 +11,6 @@
 // about supported directives.
 //
 //= require angular
+//= require angular-animate
 //= require angular-ui-router
 //= require_tree .
