@@ -1,19 +1,19 @@
-angular.module('forOM', ['ui.router', 'templates'])
+angular.module('forOM', ['ui.router'])
 .config([
 '$stateProvider',
 '$urlRouterProvider',
 function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
-    .state('winks', {
+    .state('home', {
       url: '/home',
-      templateUrl: 'winks/_winks.html',
-      controller: 'WinksCtrl'
+      templateUrl: 'home/_home.html',
+      controller: 'MainCtrl'
     })
-    .state('blinks', {
+    .state('posts', {
       url: '/posts/{id}',
-      templateUrl: 'blinks/_blinks.html',
-      controller: 'BlinksCtrl'
+      templateUrl: 'posts/_posts.html',
+      controller: 'PostsCtrl'
     });
 
   $urlRouterProvider.otherwise('home');
@@ -31,7 +31,7 @@ var o = {
 };
 return o;
 }])
-.controller('WinksCtrl', [
+.controller('MainCtrl', [
 '$scope',
 'posts',
 function($scope, posts){
@@ -58,7 +58,7 @@ function($scope, posts){
     $scope.link = '';
   };
 }])
-.controller('BlinksCtrl', [
+.controller('PostsCtrl', [
 '$scope',
 '$stateParams',
 'posts',
